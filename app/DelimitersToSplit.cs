@@ -8,7 +8,7 @@ namespace StringCalculator
         {
             AddTheNumbers addNumbers = new AddTheNumbers();
 
-            string[] delimiterChars = { " ", ",", "\\n" };
+            string[] delimiterChars = { " ", ",", ".", "...", ";", ":", "\\n", "[", "]", "//" };
             var userNumbers = inputUser.Split(delimiterChars, StringSplitOptions.None);
 
             Console.WriteLine("Essa é a soma dos números: " + addNumbers.Add(userNumbers));
