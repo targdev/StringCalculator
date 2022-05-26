@@ -1,17 +1,22 @@
 using System;
+using System.Collections.Generic;
 
 namespace StringCalculator
 {
     public class DelimitersToSplit
     {
-        public void Delimiter(string inputUser)
+        public List<string> Delimiter(string inputUser)
         {
-            AddTheNumbers addNumbers = new AddTheNumbers();
-
             string[] delimiterChars = { " ", ",", ".", "...", ";", ":", "\\n", "[", "]", "//" };
             var userNumbers = inputUser.Split(delimiterChars, StringSplitOptions.None);
+            List<string> listNumbers = new List<string>();
 
-            Console.WriteLine("Essa é a soma dos números: " + addNumbers.Add(userNumbers));
+            foreach (var num in userNumbers)
+            {
+                listNumbers.Add(num);
+            }
+
+            return listNumbers;
         }
     }
 }
