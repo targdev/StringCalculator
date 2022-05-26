@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace StringCalculator
 {
@@ -7,15 +8,16 @@ namespace StringCalculator
         public string Add(string[] numbersInString)
         {
             int defaultNum = 0;
-            string noNegatives = "";
 
             foreach (var num in numbersInString)
             {
                 if (String.IsNullOrEmpty(num)) { continue; }
-                if (num[0] == '-')
+
                 {
-                    noNegatives += num;
-                    return $"Números negativos não são permitidos: {noNegatives}";
+                    if (Convert.ToInt32(num) < 0)
+                    {
+                        return $"Ops! Números negativos não são permitidos: {num}";
+                    }
                 }
 
                 defaultNum += Convert.ToInt32(num);
