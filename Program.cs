@@ -8,13 +8,15 @@ namespace StringCalculator
         {
             AddTheNumbers addNumbers = new AddTheNumbers();
             DelimitersToSplit separators = new DelimitersToSplit();
+            ValidatorData validator = new ValidatorData();
 
             Console.Clear();
             Console.WriteLine("Escreva os números que deseja somar: \nObs.: Separe eles por virgulas ou espaços os números.");
             var inputUser = Console.ReadLine();
 
-            Console.WriteLine($"Essa é a soma dos números: {addNumbers.Add(separators.Delimiter(inputUser).ToArray())}");
+            Console.WriteLine(addNumbers.Add(validator.Validators(separators.Delimiter(inputUser))));
+
+            // Console.WriteLine($"Essa é a soma dos números: {addNumbers.Add(separators.Delimiter(inputUser).ToArray())}");
         }
     }
 }
-

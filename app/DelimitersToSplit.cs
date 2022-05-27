@@ -5,15 +5,15 @@ namespace StringCalculator
 {
     public class DelimitersToSplit
     {
-        public List<string> Delimiter(string inputUser)
+        public List<int> Delimiter(string inputUser)
         {
             string[] delimiterChars = { " ", ",", ".", "...", ";", ":", "\\n", "[", "]", "//" };
             var userNumbers = inputUser.Split(delimiterChars, StringSplitOptions.None);
-            List<string> listNumbers = new List<string>();
+            List<int> listNumbers = new List<int>();
 
             foreach (var num in userNumbers)
             {
-                listNumbers.Add(num);
+                listNumbers.Add(Convert.ToInt32(num));
             }
 
             return listNumbers;
