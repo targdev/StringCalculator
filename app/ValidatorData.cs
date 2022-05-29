@@ -8,7 +8,6 @@ namespace StringCalculator
     {
         public int[] Validators(List<int> numbersToValidade)
         {
-            List<string> errorMessage = new List<string>();
             int numberMax = 999;
 
             for (int i = 0; i < numbersToValidade.ToArray().Length; i++)
@@ -26,15 +25,7 @@ namespace StringCalculator
 
                 if (Convert.ToInt32(numbersToValidade[i]) < 0)
                 {
-                    errorMessage.Add(numbersToValidade[i].ToString());
-                }
-            }
-
-            if (errorMessage.Count > 0)
-            {
-                foreach (string msg in errorMessage)
-                {
-                    Console.WriteLine($"Números negativos não são permitidos: {msg}");
+                    Console.WriteLine($"Números negativos não são permitidos: {numbersToValidade[i]}");
                 }
             }
 
