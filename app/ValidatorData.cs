@@ -9,27 +9,29 @@ namespace StringCalculator
         public int[] Validators(List<int> numbersToValidade)
         {
             int numberMax = 999;
+            List<int> validadeNumbers = new List<int>(numbersToValidade);
+            List<int> numbersNegatives = new List<int>();
 
-            for (int i = 0; i < numbersToValidade.ToArray().Length; i++)
+            for (int i = 0; i < validadeNumbers.ToArray().Length; i++)
             {
-
-                if (String.IsNullOrEmpty(numbersToValidade[i].ToString()))
+                if (Convert.ToInt32(validadeNumbers[i]) > numberMax)
                 {
-                    continue;
+                    validadeNumbers[i] = 0;
                 }
 
-                if (Convert.ToInt32(numbersToValidade[i]) > numberMax)
-                {
-                    numbersToValidade[i] = 0;
-                }
 
-                if (Convert.ToInt32(numbersToValidade[i]) < 0)
+                if (Convert.ToInt32(validadeNumbers[i]) < 0)
                 {
-                    Console.WriteLine($"Números negativos não são permitidos: {numbersToValidade[i]}");
+                    numbersNegatives.Add(validadeNumbers[i]);
                 }
             }
 
-            return numbersToValidade.ToArray();
+            if (numbersNegatives.Count != 0)
+            {
+                Console.WriteLine($"Números negativos não são permitidos: {String.Join(", ", numbersNegatives)}");
+            }
+
+            return validadeNumbers.ToArray();
         }
     }
 }

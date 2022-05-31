@@ -11,12 +11,15 @@ namespace StringCalculator
             ValidatorData validator = new ValidatorData();
 
             Console.Clear();
-            Console.WriteLine("Escreva os números que deseja somar: \nObs.: Separe eles por virgulas ou espaços os números.");
+            Console.WriteLine("Escreva os números que deseja somar:");
             var inputUser = Console.ReadLine();
 
-            Console.WriteLine(addNumbers.Add(validator.Validators(separators.Delimiter(inputUser))));
+            var resDelimiter = separators.Delimiter(inputUser);
+            var resValidators = validator.Validators(resDelimiter);
+            var resAddNumbers = addNumbers.Add(resValidators);
 
-            // Console.WriteLine($"Essa é a soma dos números: {addNumbers.Add(separators.Delimiter(inputUser).ToArray())}");
+            Console.WriteLine($"Essa é a soma dos números: {resAddNumbers}");
+            Console.ReadKey();
         }
     }
 }

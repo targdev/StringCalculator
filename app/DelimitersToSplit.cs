@@ -13,6 +13,11 @@ namespace StringCalculator
 
             foreach (var num in userNumbers)
             {
+                if (String.IsNullOrEmpty(num))
+                {
+                    continue;
+                }
+
                 listNumbers.Add(Convert.ToInt32(num));
             }
 
