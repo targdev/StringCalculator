@@ -1,4 +1,5 @@
 ﻿using System;
+using StringCalculator.app;
 
 namespace StringCalculator
 {
@@ -15,11 +16,15 @@ namespace StringCalculator
             var inputUser = Console.ReadLine();
 
             var resDelimiter = separators.Delimiter(inputUser);
-            var resValidators = validator.Validators(resDelimiter);
-            var resAddNumbers = addNumbers.Add(resValidators);
+            var validatorsResult = validator.Validators(resDelimiter);
+            var resultSum = addNumbers.Add(validatorsResult.ValidNumbers);
 
-            Console.WriteLine($"Essa é a soma dos números: {resAddNumbers}");
-            Console.ReadKey();
+            Console.WriteLine($"Essa é a soma dos números: {resultSum}");
+
+            if (validatorsResult.InvalidNumbers.Count != 0)
+            {
+                Console.WriteLine($"Números negativos não são permitidos: {String.Join(", ", validatorsResult.InvalidNumbers)}");
+            }
         }
     }
 }

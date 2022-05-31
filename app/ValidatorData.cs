@@ -1,37 +1,33 @@
 using System;
 using System.Collections.Generic;
+using StringCalculator.models;
 
-
-namespace StringCalculator
+namespace StringCalculator.app
 {
     public class ValidatorData
     {
-        public int[] Validators(List<int> numbersToValidade)
+        public ValidatorResult Validators(List<int> numbersToValidade)
         {
+            ValidatorResult result = new ValidatorResult();
             int numberMax = 999;
-            List<int> validadeNumbers = new List<int>(numbersToValidade);
-            List<int> numbersNegatives = new List<int>();
 
-            for (int i = 0; i < validadeNumbers.ToArray().Length; i++)
+            foreach (var num in numbersToValidade)
             {
-                if (Convert.ToInt32(validadeNumbers[i]) > numberMax)
+                if (num > numberMax)
                 {
-                    validadeNumbers[i] = 0;
+                    continue;
                 }
 
-
-                if (Convert.ToInt32(validadeNumbers[i]) < 0)
+                if (num < 0)
                 {
-                    numbersNegatives.Add(validadeNumbers[i]);
+                    result.InvalidNumbers.Add(num);
+                    continue;
                 }
+
+                result.ValidNumbers.Add(num);
             }
 
-            if (numbersNegatives.Count != 0)
-            {
-                Console.WriteLine($"Números negativos não são permitidos: {String.Join(", ", numbersNegatives)}");
-            }
-
-            return validadeNumbers.ToArray();
+            return result;
         }
     }
 }

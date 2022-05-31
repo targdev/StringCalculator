@@ -1,10 +1,11 @@
 using System;
+using System.Collections.Generic;
 
-namespace StringCalculator
+namespace StringCalculator.app
 {
     public class AddTheNumbers
     {
-        public string Add(int[] numbersInString)
+        public string Add(List<int> numbersInString)
         {
             int defaultNum = 0;
 
